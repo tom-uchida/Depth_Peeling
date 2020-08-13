@@ -5,8 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <kvs/glut/Application>
-#include <kvs/glut/Screen>
+#include <kvs/Application>
+#include <kvs/Screen>
 #include <kvs/File>
 #include <kvs/Light>
 #include <kvs/PolygonObject>
@@ -23,9 +23,9 @@ namespace local
 class Screens
 {
 private:
-    kvs::glut::Screen m_screen_pbr;
-    kvs::glut::Screen m_screen_dpr;
-    kvs::glut::Screen m_screen_tru;
+    kvs::Screen m_screen_pbr;
+    kvs::Screen m_screen_dpr;
+    kvs::Screen m_screen_tru;
     local::Label m_label_pbr;
     local::Label m_label_dpr;
     local::Label m_label_tru;
@@ -34,7 +34,7 @@ private:
     kvs::ColorImage m_image_tru;
 
 public:
-    Screens( kvs::glut::Application& app, local::Input& input ):
+    Screens( kvs::Application& app, local::Input& input ):
         m_screen_pbr( &app ),
         m_screen_dpr( &app ),
         m_screen_tru( &app ),
@@ -68,6 +68,7 @@ public:
     }
 
 private:
+    // Paticle-based Rendering
     void setup_pbr( local::Input& input, kvs::PolygonObject& polygon )
     {
         typedef kvs::PolygonObject Object;
@@ -91,6 +92,7 @@ private:
         m_label_pbr.show();
     }
 
+    // Depth Peeling
     void setup_dpr( local::Input& input, kvs::PolygonObject& polygon )
     {
         typedef kvs::PolygonObject Object;
@@ -115,6 +117,7 @@ private:
         m_label_dpr.show();
     }
 
+    // Truth
     void setup_tru( local::Input& input, kvs::PolygonObject& polygon )
     {
         typedef kvs::PolygonObject Object;
