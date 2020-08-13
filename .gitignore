@@ -1,0 +1,8 @@
+.vscode/
+
+*.zip
+*.kvs
+*.o
+*.sh
+
+DepthPeeling

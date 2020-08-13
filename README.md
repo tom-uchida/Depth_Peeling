@@ -1,13 +1,7 @@
-# Depth Peeling
+# Depth_Peeling
 
-## Build
-
-```
-$ git clone https://github.com/naohisas/DepthPeeling.git
-$ cd DepthPeeling
-$ kvsmake -G
-$ kvsmake
-```
+## Reference Repository
+- https://github.com/naohisas/DepthPeeling
 
 ## Usage
 
@@ -26,9 +20,3 @@ Options:
 -background : Background color. (default: 255, 255, 255)
 -offscreen  : Offscreen rendering [0:disable, 1:enable]. (default: 0)
 ```
-
-## Prerequisites
-
-+ [KVS](https://github.com/naohisas/KVS)
-# Depth_Peeling
-# Depth_Peeling
