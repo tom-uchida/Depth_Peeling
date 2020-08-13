@@ -352,7 +352,7 @@ void DepthPeelingRenderer::initialize_pass()
     m_cycle = 0;
     kvs::FrameBufferObject::Binder fbo( m_framebuffer[0] );
     kvs::OpenGL::SetDrawBuffer( GL_COLOR_ATTACHMENT0 );
-    kvs::OpenGL::SetClearColor( kvs::Vec4::All( 0.0 ) );
+    kvs::OpenGL::SetClearColor( kvs::Vec4::Zero() );
     kvs::OpenGL::SetClearDepth( 0.0 );
     kvs::OpenGL::Clear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
@@ -380,7 +380,7 @@ void DepthPeelingRenderer::peel_pass( const kvs::PolygonObject* polygon )
     kvs::FrameBufferObject::Binder fbo1( m_framebuffer[back] );
     {
         kvs::OpenGL::SetDrawBuffer( GL_COLOR_ATTACHMENT0 );
-        kvs::OpenGL::SetClearColor( kvs::Vec4::All( 0.0 ) );
+        kvs::OpenGL::SetClearColor( kvs::Vec4::Zero() );
         kvs::OpenGL::SetClearDepth( 1.0 );
         kvs::OpenGL::Clear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
@@ -391,7 +391,7 @@ void DepthPeelingRenderer::peel_pass( const kvs::PolygonObject* polygon )
     kvs::FrameBufferObject::Binder fbo2( m_framebuffer[target] );
     {
         kvs::OpenGL::SetDrawBuffer( GL_COLOR_ATTACHMENT0 );
-        kvs::OpenGL::SetClearColor( kvs::Vec4::All( 0.0 ) );
+        kvs::OpenGL::SetClearColor( kvs::Vec4::Zero() );
         kvs::OpenGL::SetClearDepth( 1.0 );
         kvs::OpenGL::Clear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 

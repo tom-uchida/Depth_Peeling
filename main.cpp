@@ -1,4 +1,4 @@
-#include <kvs/glut/Application>
+#include <kvs/Application>
 #include "Input.h"
 #include "Data.h"
 #include "Screens.h"
@@ -6,7 +6,7 @@
 
 int main( int argc, char** argv )
 {
-    kvs::glut::Application app( argc, argv );
+    kvs::Application app( argc, argv );
 
     local::Input input( argc, argv );
     if ( !input.parse() ) { return false; }
