@@ -1,6 +1,6 @@
 # Depth_Peeling
 
-## Reference Repository
+## Original Repository
 - https://github.com/naohisas/DepthPeeling
 
 ## Usage
