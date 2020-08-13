@@ -9,20 +9,10 @@ int main( int argc, char** argv )
     kvs::Application app( argc, argv );
 
     local::Input input( argc, argv );
-    if ( !input.parse() ) { return false; }
+    if ( !input.parse() ) { return 1; }
 
     local::Screens screens( app, input );
-    if ( input.offscreen )
-    {
-        screens.hide();
-        screens.capture();
-        screens.dump( input );
-        app.quit();
-        return true;
-    }
-    else
-    {
-        screens.show();
-        return app.run();
-    }
+    screens.show();
+    
+    return app.run();
 }
