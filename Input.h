@@ -32,8 +32,8 @@ public:
         npeels( 1 ),
         npolygons( 10 ),
         opacity( 0.5 ),
-        color( kvs::RGBColor::Black() ),
-        background( kvs::RGBColor::White() ),
+        color( kvs::RGBColor::White() ),
+        background( kvs::RGBColor::Black() ),
         offscreen( false ),
         seed( time(NULL) )
     {
