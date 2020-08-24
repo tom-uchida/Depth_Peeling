@@ -10,11 +10,11 @@
 namespace local
 {
 
-inline kvs::PolygonObject Data( const local::Input& input )
+inline kvs::PolygonObject Data( const local::Input& _input )
 {
-    const size_t npolygons = input.npolygons;
-    const kvs::RGBColor color = input.color;
-    const kvs::UInt8 opacity = int( input.opacity * 255 );
+    const size_t npolygons = _input.npolygons;
+    const kvs::RGBColor color = _input.color;
+    const kvs::UInt8 opacity = int( _input.opacity * 255 );
 
     const size_t nvertices = npolygons * 3;
     kvs::ValueArray<kvs::Real32> coords( nvertices * 3 );
@@ -22,7 +22,7 @@ inline kvs::PolygonObject Data( const local::Input& input )
     kvs::Real32* pcoords = coords.data();
     kvs::Real32* pnormals = normals.data();
 
-    kvs::MersenneTwister rand( input.seed );
+    kvs::MersenneTwister rand( _input.seed );
     for ( size_t i = 0; i < npolygons; i++ )
     {
         kvs::Vec3 p0( rand(), rand(), rand() );
@@ -51,6 +51,7 @@ inline kvs::PolygonObject Data( const local::Input& input )
     object.setNormals( normals );
     object.setColor( color );
     object.setOpacity( opacity );
+    
     return object;
 }
 

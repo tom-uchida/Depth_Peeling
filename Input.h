@@ -28,9 +28,9 @@ public:
     Input( int argc, char** argv ):
         width( 512 ),
         height( 512 ),
-        nrepeats( 1 ),
+        nrepeats( 100 ),
         npeels( 1 ),
-        npolygons( 10 ),
+        npolygons( 100 ),
         opacity( 0.5 ),
         color( kvs::RGBColor::White() ),
         background( kvs::RGBColor::Black() ),
