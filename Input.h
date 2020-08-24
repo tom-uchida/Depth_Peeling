@@ -30,7 +30,7 @@ public:
         height( 512 ),
         nrepeats( 100 ),
         npeels( 1 ),
-        npolygons( 100 ),
+        npolygons( 10 ),
         opacity( 0.5 ),
         color( kvs::RGBColor::White() ),
         background( kvs::RGBColor::Black() ),

@@ -23,6 +23,6 @@ Options:
 
 ## Visualization Results
 
-|Particle-based Rendering|Depth Peeling Rendering<br>(Number of peels is 1)|Truth(Number of peels is 100)|
+|Particle-based Rendering|Depth Peeling Rendering<br>(Number of peels is 1)|Depth Peeling Rendering<br>(Number of peels is 10)|
 |:-:|:-:|:-:|
-|![](figures/PBR.png)|![](figures/DPR.png)|![](figures/Truth.png)|
+|![](figures/PBR.png)|![](figures/DPR-1.png)|![](figures/DPR-10.png)|
