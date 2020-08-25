@@ -23,6 +23,22 @@ Options:
 
 ## Visualization Results
 
-|Particle-based Rendering|Depth Peeling Rendering<br>(Number of peels is 1)|Depth Peeling Rendering<br>(Number of peels is 10)|
-|:-:|:-:|:-:|
-|![](figures/PBR.png)|![](figures/DPR-1.png)|![](figures/DPR-10.png)|
+|Layer-1|Layer-2|
+|:-:|:-:|
+|![](figures/Layer1.png)|![](figures/Layer2.png)|
+
+|Layer-3|Layer-4|
+|:-:|:-:|
+|![](figures/Layer3.png)|![](figures/Layer4.png)|
+
+|Layer-5|Layer-6|
+|:-:|:-:|
+|![](figures/Layer5.png)|![](figures/Layer6.png)|
+
+|Layer-7|Layer-8|
+|:-:|:-:|
+|![](figures/Layer7.png)|![](figures/Layer8.png)|
+
+|Layer-9|Layer-10|
+|:-:|:-:|
+|![](figures/Layer9.png)|![](figures/Layer10.png)|

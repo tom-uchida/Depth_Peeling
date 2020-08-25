@@ -29,13 +29,14 @@ public:
         width( 512 ),
         height( 512 ),
         nrepeats( 100 ),
-        npeels( 1 ),
+        npeels( 9 ),
         npolygons( 10 ),
         opacity( 0.5 ),
         color( kvs::RGBColor::White() ),
         background( kvs::RGBColor::Black() ),
         offscreen( false ),
-        seed( time(NULL) )
+        // seed( time(NULL) )
+        seed( 0 )
     {
         m_commandline = kvs::CommandLine( argc, argv );
         m_commandline.addHelpOption();
