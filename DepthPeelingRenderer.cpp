@@ -115,6 +115,7 @@ DepthPeelingRenderer::DepthPeelingRenderer():
     m_shader( NULL ),
     m_npeels( 2 )
 {
+    // PolygonRendererGLSL.h
     this->setShader( kvs::Shader::Lambert() );
 }
 
@@ -125,6 +126,10 @@ DepthPeelingRenderer::~DepthPeelingRenderer()
 
 void DepthPeelingRenderer::exec( kvs::ObjectBase* object, kvs::Camera* camera, kvs::Light* light )
 {
+    // Scene.cpp
+    // 687: void Scene::paintFunction()
+    // 709: renderer->exec( object, m_camera, m_light );
+
     kvs::PolygonObject* polygon = kvs::PolygonObject::DownCast( object );
     m_has_normal = polygon->normals().size() > 0;
     m_has_connection = polygon->numberOfConnections() > 0;

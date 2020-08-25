@@ -20,7 +20,9 @@ namespace local
 {
 
 class DepthPeelingRenderer : public kvs::PolygonRenderer
+// class PolygonRenderer : public kvs::RendererBase
 {
+    // 
     kvsModule( local::DepthPeelingRenderer, Renderer );
     kvsModuleBaseClass( kvs::PolygonRenderer );
 

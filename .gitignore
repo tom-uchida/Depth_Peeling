@@ -1,9 +1,10 @@
 .vscode/
+kvs-dev/
 
 *.zip
 *.kvs
 *.o
 *.sh
+*.out
 
-DepthPeeling
-DepthPeeling.exe
+Makefile
