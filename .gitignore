@@ -5,6 +5,6 @@ kvs-dev/
 *.kvs
 *.o
 *.sh
-*.out
 
+DepthPeeling
 Makefile
