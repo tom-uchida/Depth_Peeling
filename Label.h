@@ -36,18 +36,18 @@ public:
     void screenUpdated()
     {
         std::string renderer_name = m_scene->renderer()->name();
-        if ( renderer_name == "PBR" )
-        {
-            this->setText( "Rendering method: Particle-based Rendering" );
-        }
-        else if ( renderer_name == "DPR" || renderer_name == "TRU" )
-        {
-            this->setText( "Rendering method: Depth Peeling" );
-        }
+        // if ( renderer_name == "PBR" )
+        // {
+        //     this->setText( "Rendering method: Particle-based Rendering" );
+        // }
+        // else if ( renderer_name == "DPR" || renderer_name == "TRU" )
+        // {
+        //     this->setText( "Rendering method: Depth Peeling" );
+        // }
 
-        std::stringstream resolution;
-        resolution << screen()->width() << " x " << screen()->height();
-        this->addText( ( "Image resolution: " + resolution.str() ).c_str() );
+        // std::stringstream resolution;
+        // resolution << screen()->width() << " x " << screen()->height();
+        // this->addText( ( "Image resolution: " + resolution.str() ).c_str() );
 
         std::stringstream npolygons;
         npolygons << m_input->npolygons;
@@ -76,9 +76,9 @@ public:
             this->addText( ( "Number of peels: " + npeels.str() ).c_str() );
         }
 
-        std::stringstream rendering_time;
-        rendering_time << m_scene->renderer()->timer().msec();
-        this->addText( ( "Rendering time [msec]: " + rendering_time.str() ).c_str() );
+        // std::stringstream rendering_time;
+        // rendering_time << m_scene->renderer()->timer().msec();
+        // this->addText( ( "Rendering time [msec]: " + rendering_time.str() ).c_str() );
     }
 };
 

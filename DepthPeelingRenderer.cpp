@@ -124,12 +124,12 @@ DepthPeelingRenderer::~DepthPeelingRenderer()
     if ( m_shader ) { delete m_shader; }
 }
 
+// Scene.cpp:
+//  687: void Scene::paintFunction()
+//  709: renderer->exec( object, m_camera, m_light );
 void DepthPeelingRenderer::exec( kvs::ObjectBase* object, kvs::Camera* camera, kvs::Light* light )
 {
-    // Scene.cpp
-    // 687: void Scene::paintFunction()
-    // 709: renderer->exec( object, m_camera, m_light );
-
+    // DownCast: kvs::ObjectBase* → kvs::PolygonObject*
     kvs::PolygonObject* polygon = kvs::PolygonObject::DownCast( object );
     m_has_normal = polygon->normals().size() > 0;
     m_has_connection = polygon->numberOfConnections() > 0;
@@ -172,6 +172,8 @@ void DepthPeelingRenderer::exec( kvs::ObjectBase* object, kvs::Camera* camera, k
         this->create_buffer_object( polygon );
     }
 
+    // Peeling Processing
+    std::cout << "m_npeels: " << m_npeels << "\n";
     this->initialize_pass();
     for ( size_t i = 0; i < m_npeels; i++ )
     {
@@ -186,8 +188,8 @@ void DepthPeelingRenderer::create_shader_program()
 {
     // Build depth peeling shader
     {
-        kvs::ShaderSource vert( "peeling.vert" );
-        kvs::ShaderSource frag( "peeling.frag" );
+        kvs::ShaderSource vert( "shaders/peeling.vert" );
+        kvs::ShaderSource frag( "shaders/peeling.frag" );
         if ( isEnabledShading() )
         {
             switch ( m_shader->type() )
@@ -216,8 +218,8 @@ void DepthPeelingRenderer::create_shader_program()
 
     // Build blending shader
     {
-        kvs::ShaderSource vert( "blending.vert" );
-        kvs::ShaderSource frag( "blending.frag" );
+        kvs::ShaderSource vert( "shaders/blending.vert" );
+        kvs::ShaderSource frag( "shaders/blending.frag" );
 
         m_blending_shader.build( vert, frag );
         m_blending_shader.bind();
@@ -229,8 +231,8 @@ void DepthPeelingRenderer::create_shader_program()
 
     // Build finalizing shader
     {
-        kvs::ShaderSource vert( "finalizing.vert" );
-        kvs::ShaderSource frag( "finalizing.frag" );
+        kvs::ShaderSource vert( "shaders/finalizing.vert" );
+        kvs::ShaderSource frag( "shaders/finalizing.frag" );
 
         m_finalizing_shader.build( vert, frag );
         m_finalizing_shader.bind();

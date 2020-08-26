@@ -1,5 +1,6 @@
 .vscode/
-kvs-dev/
+kvs-2.9/
+shaders/
 
 *.zip
 *.kvs

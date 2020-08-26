@@ -4,7 +4,6 @@
 - https://github.com/naohisas/DepthPeeling
 
 ## Usage
-
 ```
 Usage: ./DepthPeeling [options]
 
@@ -19,6 +18,12 @@ Options:
 -color      : Color value for polygon object. (default: 0, 0, 0)
 -background : Background color. (default: 255, 255, 255)
 -offscreen  : Offscreen rendering [0:disable, 1:enable]. (default: 0)
+```
+
+### Example
+```
+$ make rebuild
+$ ./DepthPeeling -npeels 5
 ```
 
 ## Visualization Results
