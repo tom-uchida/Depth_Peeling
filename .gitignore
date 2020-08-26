@@ -1,6 +1,7 @@
 .vscode/
 kvs-2.9/
 shaders/
+PLY_DATA/
 
 *.zip
 *.kvs

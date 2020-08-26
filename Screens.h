@@ -28,12 +28,14 @@ private:
     kvs::ColorImage m_image_dpr;
 
 public:
-    Screens( kvs::Application& _app, local::Input& _input ):
+    Screens( kvs::Application& _app, local::Input& _input, const kvs::PolygonObject* _ply ):
         m_screen_dpr( &_app ),
         m_label_dpr( &m_screen_dpr, m_screen_dpr.scene() )
     {
         // Create some polygons to rendering
         kvs::PolygonObject polygon = local::Data( _input );
+
+        // kvs::PolygonObject polygon = *_ply;
 
         // Set up
         m_screen_dpr.setTitle( "Depth Peeling Rendering" );
