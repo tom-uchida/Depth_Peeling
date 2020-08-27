@@ -12,11 +12,9 @@ int main( int argc, char** argv )
 
     ImportPointClouds *ply = new ImportPointClouds( argv[1] );
     ply->updateMinMaxCoords();
-    std::cout << "\n";
-    std::cout << "PLY Min, Max Coords:\n";
-    std::cout << "Min: " << ply->minObjectCoord() << "\n";
-    std::cout << "Max: " << ply->maxObjectCoord() << "\n";
-    std::cout << "Number of points: " << ply->numberOfVertices() << "\n";
+    ply->setColor( kvs::RGBColor::White() );
+    ply->setPolygonTypeToTriangle();
+    ply->setNormalTypeToPolygon();
 
     kvs::Application app( argc, argv );
     local::Screens screens( app, input, ply );

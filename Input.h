@@ -35,7 +35,8 @@ public:
         color( kvs::RGBColor::White() ),
         background( kvs::RGBColor::Black() ),
         offscreen( false ),
-        seed( time(NULL) ) // seed( 0 )
+        // seed( time(NULL) )
+        seed( 0 )
     {
         m_commandline = kvs::CommandLine( argc, argv );
         m_commandline.addHelpOption();

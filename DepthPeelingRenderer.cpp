@@ -244,11 +244,11 @@ void DepthPeelingRenderer::create_shader_program()
 
 void DepthPeelingRenderer::create_buffer_object( const kvs::PolygonObject* polygon )
 {
-    if ( polygon->polygonType() != kvs::PolygonObject::Triangle )
-    {
-        kvsMessageError("Not supported polygon type.");
-        return;
-    }
+    // if ( polygon->polygonType() != kvs::PolygonObject::Triangle )
+    // {
+    //     kvsMessageError("Not supported polygon type.");
+    //     return;
+    // }
 
     if ( polygon->colors().size() != 3 && polygon->colorType() == kvs::PolygonObject::PolygonColor )
     {
@@ -379,7 +379,7 @@ void DepthPeelingRenderer::finalize_pass()
 
 void DepthPeelingRenderer::peel_pass( const kvs::PolygonObject* polygon )
 {
-    const int front = m_cycle;
+    const int front = m_cycle; // 0 or 1
     const int back = 2;
     const int target = ( m_cycle + 1 ) % 2;
     m_cycle = target;
@@ -451,10 +451,14 @@ void DepthPeelingRenderer::draw( const kvs::PolygonObject* polygon )
     {
         kvs::IndexBufferObject::Binder bind3( m_ibo );
         KVS_GL_CALL( glDrawElements( GL_TRIANGLES, 3 * npolygons, GL_UNSIGNED_INT, 0 ) );
+        KVS_GL_CALL( glDrawElements( GL_TRIANGLES, 3 * npolygons, GL_UNSIGNED_INT, 0 ) );
     }
-    else
+    else 
     {
         KVS_GL_CALL( glDrawArrays( GL_TRIANGLES, 0, 3 * npolygons ) );
+
+        // // Draw points.
+        // KVS_GL_CALL( glDrawArrays( GL_POINTS, 0, nvertices ) );
     }
 
     // Disable coords.
