@@ -455,13 +455,17 @@ void DepthPeelingRenderer::draw( const kvs::PolygonObject* polygon )
         kvs::IndexBufferObject::Binder bind3( m_ibo );
         KVS_GL_CALL( glDrawElements( GL_TRIANGLES, 3 * npolygons, GL_UNSIGNED_INT, 0 ) );
         KVS_GL_CALL( glDrawElements( GL_TRIANGLES, 3 * npolygons, GL_UNSIGNED_INT, 0 ) );
+
+        // KVS_GL_CALL( glDrawArrays( GL_POINTS, 0, nvertices ) );
     }
     else 
     {
-        KVS_GL_CALL( glDrawArrays( GL_TRIANGLES, 0, 3 * npolygons ) );
+        // Draw polygons.
+        // KVS_GL_CALL( glDrawArrays( GL_TRIANGLES, 0, 3 * npolygons ) );
 
         // Draw points.
-        // KVS_GL_CALL( glDrawArrays( GL_POINTS, 0, nvertices ) );
+        std::cout << "nvertices: " << nvertices << "\n";
+        KVS_GL_CALL( glDrawArrays( GL_POINTS, 0, nvertices ) );
     }
 
     // Disable coords.
