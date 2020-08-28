@@ -138,6 +138,7 @@ void DepthPeelingRenderer::exec( kvs::ObjectBase* object, kvs::Camera* camera, k
     BaseClass::startTimer();
     kvs::OpenGL::WithPushedAttrib p( GL_ALL_ATTRIB_BITS );
 
+    // Prepare for rendering
     const size_t width = camera->windowWidth();
     const size_t height = camera->windowHeight();
     const bool window_created = m_width == 0 && m_height == 0;
@@ -371,7 +372,8 @@ void DepthPeelingRenderer::finalize_pass()
     kvs::OpenGL::SetBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
     KVS_GL_CALL( glBlendEquation( GL_FUNC_ADD ) );
 
-    kvs::Texture::Binder tex0( m_color_buffer[ m_cycle ], 0 );
+    // kvs::Texture::Binder tex0( m_color_buffer[ m_cycle ], 0 );
+    kvs::Texture::Binder tex0( m_color_buffer[ 2 ], 0 );
     kvs::ProgramObject::Binder shader( m_finalizing_shader );
     kvs::OpenGL::Disable( GL_DEPTH_TEST );
     ::DrawRect();
@@ -381,7 +383,7 @@ void DepthPeelingRenderer::peel_pass( const kvs::PolygonObject* polygon )
 {
     const int front = m_cycle; // 0 or 1
     const int back = 2;
-    const int target = ( m_cycle + 1 ) % 2;
+    const int target = ( m_cycle + 1 ) % 2; // 1 or 0
     m_cycle = target;
 
     kvs::FrameBufferObject::Binder fbo1( m_framebuffer[back] );
@@ -392,6 +394,7 @@ void DepthPeelingRenderer::peel_pass( const kvs::PolygonObject* polygon )
         kvs::OpenGL::Clear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
         kvs::Texture::Binder tex10( m_depth_buffer[front], 10 );
+        kvs::Texture::Binder tex11( m_color_buffer[front], 11 );
         this->draw( polygon );
     }
 
@@ -402,7 +405,7 @@ void DepthPeelingRenderer::peel_pass( const kvs::PolygonObject* polygon )
         kvs::OpenGL::SetClearDepth( 1.0 );
         kvs::OpenGL::Clear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-        kvs::Texture::Binder tex11( m_color_buffer[front], 11 );
+        
         kvs::Texture::Binder tex12( m_depth_buffer[back], 12 );
         kvs::Texture::Binder tex13( m_color_buffer[back], 13 );
         this->blend();
@@ -457,7 +460,7 @@ void DepthPeelingRenderer::draw( const kvs::PolygonObject* polygon )
     {
         KVS_GL_CALL( glDrawArrays( GL_TRIANGLES, 0, 3 * npolygons ) );
 
-        // // Draw points.
+        // Draw points.
         // KVS_GL_CALL( glDrawArrays( GL_POINTS, 0, nvertices ) );
     }
 
@@ -480,6 +483,8 @@ void DepthPeelingRenderer::blend()
     kvs::OpenGL::Enable( GL_DEPTH_TEST );
     kvs::OpenGL::SetDepthFunc( GL_ALWAYS );
     ::DrawRect();
+    // Obtain depth buffer by executing point occlusion effect.
+    // GL_LESS: Regarding the target shape, priority is given to the one that is near from one direction.
     kvs::OpenGL::SetDepthFunc( GL_LESS );
 }
 

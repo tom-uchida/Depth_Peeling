@@ -33,9 +33,9 @@ public:
         m_label_dpr( &m_screen_dpr, m_screen_dpr.scene() )
     {
         // Create some polygons to rendering
-        // kvs::PolygonObject polygon = local::Data( _input );
+        kvs::PolygonObject polygon = local::Data( _input );
 
-        kvs::PolygonObject polygon = *_ply;
+        // kvs::PolygonObject polygon = *_ply;
 
         // Set up
         m_screen_dpr.setTitle( "Depth Peeling Rendering" );
@@ -64,10 +64,10 @@ private:
         renderer->setBackgroundColor( _input.background );
         renderer->setNumberOfPeels( _input.npeels );
 
-        m_screen_dpr.registerObject( object, renderer );
-        m_screen_dpr.create();
         m_screen_dpr.setSize( _input.width, _input.height );
         m_screen_dpr.setBackgroundColor( _input.background );
+        m_screen_dpr.registerObject( object, renderer );
+        m_screen_dpr.create();
 
         m_label_dpr.setInput( _input );
         m_label_dpr.show();

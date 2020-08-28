@@ -49,13 +49,13 @@ public:
         // resolution << screen()->width() << " x " << screen()->height();
         // this->addText( ( "Image resolution: " + resolution.str() ).c_str() );
 
-        std::stringstream npolygons;
-        npolygons << m_input->npolygons;
-        this->addText( ( "Number of polygons: " + npolygons.str() ).c_str() );
+        // std::stringstream npolygons;
+        // npolygons << m_input->npolygons;
+        // this->addText( ( "Number of polygons: " + npolygons.str() ).c_str() );
 
-        std::stringstream opacity;
-        opacity << m_input->opacity;
-        this->addText( ( "Polygon opacity: " + opacity.str() ).c_str() );
+        // std::stringstream opacity;
+        // opacity << m_input->opacity;
+        // this->addText( ( "Polygon opacity: " + opacity.str() ).c_str() );
 
         if ( renderer_name == "PBR" )
         {
@@ -67,7 +67,8 @@ public:
         {
             std::stringstream npeels;
             npeels << m_input->npeels;
-            this->addText( ( "Number of peels: " + npeels.str() ).c_str() );
+            // this->addText( ( "Number of peels: " + npeels.str() ).c_str() );
+            this->addText( ( "Layer: " + npeels.str()).c_str() );
         }
         else if ( renderer_name == "TRU" )
         {

@@ -23,27 +23,34 @@ Options:
 ### Example
 ```
 $ make rebuild
-$ ./DepthPeeling -npeels 5
+$ ./DepthPeeling -npeels 1
 ```
 
 ## Visualization Results
 
-|Layer-1|Layer-2|
-|:-:|:-:|
-|![](figures/Layer1.png)|![](figures/Layer2.png)|
+### Polygon
+|Layer1|Layer2|Layer3|
+|:-:|:-:|:-:|
+|![](figures/Polygon/Layer1.png)|![](figures/Polygon/Layer2.png)|![](figures/Polygon/Layer3.png)|
 
-|Layer-3|Layer-4|
-|:-:|:-:|
-|![](figures/Layer3.png)|![](figures/Layer4.png)|
+|Layer4|Layer5|Layer6|
+|:-:|:-:|:-:|
+|![](figures/Polygon/Layer4.png)|![](figures/Polygon/Layer5.png)|![](figures/Polygon/Layer6.png)|
 
-|Layer-5|Layer-6|
-|:-:|:-:|
-|![](figures/Layer5.png)|![](figures/Layer6.png)|
+### Bunny
+|Layer1|Layer2|Layer3|
+|:-:|:-:|:-:|
+|![](figures/Bunny/Layer1.png)|![](figures/Bunny/Layer2.png)|![](figures/Bunny/Layer3.png)|
 
-|Layer-7|Layer-8|
-|:-:|:-:|
-|![](figures/Layer7.png)|![](figures/Layer8.png)|
+|Layer4|Layer5|Layer6|
+|:-:|:-:|:-:|
+|![](figures/Bunny/Layer4.png)|![](figures/Bunny/Layer5.png)|![](figures/Bunny/Layer6.png)|
 
-|Layer-9|Layer-10|
-|:-:|:-:|
-|![](figures/Layer9.png)|![](figures/Layer10.png)|
+### Dragon
+|Layer1|Layer2|Layer3|
+|:-:|:-:|:-:|
+|![](figures/Dragon/Layer1.png)|![](figures/Dragon/Layer2.png)|![](figures/Dragon/Layer3.png)|
+
+|Layer4|Layer5|Layer6|
+|:-:|:-:|:-:|
+|![](figures/Dragon/Layer4.png)|![](figures/Dragon/Layer5.png)|![](figures/Dragon/Layer6.png)|
