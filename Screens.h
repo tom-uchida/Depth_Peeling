@@ -16,63 +16,52 @@
 #include "Data.h"
 #include "Label.h"
 
-
 namespace local
 {
 
 class Screens
 {
 private:
-    kvs::Screen m_screen_dpr;
-    local::Label m_label_dpr;
+    // local::Label m_label; // m_label( &_screen, _screen.scene() )
     kvs::ColorImage m_image_dpr;
 
 public:
-    Screens( kvs::Application& _app, local::Input& _input, const kvs::PolygonObject* _ply ):
-        m_screen_dpr( &_app ),
-        m_label_dpr( &m_screen_dpr, m_screen_dpr.scene() )
+    Screens( kvs::Screen& _screen, local::Input& _input, const kvs::PolygonObject* _ply )
     {
         // Create some polygons to rendering
-        // kvs::PolygonObject polygon = local::Data( _input );
+        // kvs::PolygonObject object = local::Data( _input );
 
-        kvs::PolygonObject polygon = *_ply;
+        kvs::PolygonObject object = *_ply;
 
-        // Set up
-        m_screen_dpr.setTitle( "Depth Peeling Rendering" );
-        m_screen_dpr.setPosition( 0, 0 );
-        this->setup_dpr( _input, polygon );
-    }
+        // Set up screen   
+        this->setup_screen( _screen, _input, object );
 
-    void show()
-    {
-        m_screen_dpr.show();
-        m_label_dpr.show();
+        // Draw label
+        // m_label.setInput( _input );
+        // m_label.show();
+
+        kvs::Light::SetModelTwoSide( true );
     }
 
 private:
 
-    void setup_dpr( local::Input& _input, kvs::PolygonObject& _polygon )
+    void setup_screen( kvs::Screen& _screen, local::Input& _input, kvs::PolygonObject& _object )
     {
-        typedef kvs::PolygonObject Object;
-        typedef local::DepthPeelingRenderer Renderer;
+        _screen.setTitle( "Depth Peeling Rendering" );
+        _screen.setPosition( 0, 0 );
+        _screen.setSize( _input.width, _input.height );
+        _screen.setBackgroundColor( _input.background ); 
+        _screen.create();
 
-        Object* object = new Object();
-        object->shallowCopy( _polygon );
+        kvs::PolygonObject* object = new kvs::PolygonObject();
+        object->shallowCopy( _object );
 
-        Renderer* renderer = new Renderer();
+        local::DepthPeelingRenderer* renderer = new local::DepthPeelingRenderer();
         renderer->setName("DPR");
-        renderer->setBackgroundColor( _input.background );
+        // renderer->setBackgroundColor( _input.background );
         renderer->setNumberOfPeels( _input.npeels );
 
-        m_screen_dpr.setSize( _input.width, _input.height );
-        m_screen_dpr.setBackgroundColor( _input.background );
-        m_screen_dpr.registerObject( object, renderer );
-        m_screen_dpr.create();
-
-        m_label_dpr.setInput( _input );
-        m_label_dpr.show();
-
-        kvs::Light::SetModelTwoSide( true );
+        _screen.registerObject( object, renderer );
     }
 
     kvs::ColorImage diff_image(

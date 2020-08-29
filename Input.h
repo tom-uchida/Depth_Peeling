@@ -9,6 +9,7 @@ namespace local
 
 struct Input
 {
+
 private:
     kvs::CommandLine m_commandline;
 
